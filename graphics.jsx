@@ -40,9 +40,8 @@ const DashboardMock = () => {
         <div style={{ display: 'grid', gridTemplateColumns: '180px 1fr', minHeight: 460 }}>
           {/* Sidebar */}
           <div style={{ background: 'var(--ink-900)', color: '#fff', padding: '18px 14px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 22 }}>
-              <Logo size={22} />
-              <span style={{ fontFamily: 'var(--f-display)', fontWeight: 700, fontSize: 14 }}>PrimeHR</span>
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: 22 }}>
+              <img src="images/primehr.svg" alt="PrimeHR" style={{ height: 22, width: 'auto', display: 'block', filter: 'brightness(0) invert(1)' }} />
             </div>
             {[
               { i: 'chart', l: 'Dashboard', active: true },
