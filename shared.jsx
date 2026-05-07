@@ -92,30 +92,65 @@ const NavBar = ({ active = '' }) => {
   const closeTimer = React.useRef(null);
   const openMega = () => { clearTimeout(closeTimer.current); setMegaOpen(true); };
   const closeMega = () => { closeTimer.current = setTimeout(() => setMegaOpen(false), 120); };
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const closeMobile = () => setMobileOpen(false);
+  // Close mobile nav on resize to desktop
+  React.useEffect(() => {
+    const onResize = () => { if (window.innerWidth > 900) setMobileOpen(false); };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
   return (
-    <nav className="nav" style={scrolled ? { boxShadow: 'var(--shadow-sm)' } : {}}>
-      <div className="nav-inner">
-        <a className="nav-logo" href="index.html">
-          <img src="images/primehr.svg" alt="PrimeHR" style={{ height: 32, width: 'auto', display: 'block' }} />
-        </a>
-        <div className="nav-links">
-          <a href="index.html" className={`nav-link ${active === 'home' ? 'is-active' : ''}`}>Home</a>
-          <div className="has-mega" onMouseEnter={openMega} onMouseLeave={closeMega}>
-            <a href="solutions.html" className={`nav-link ${['hrms', 'ffa', 'finance', 'soon'].includes(active) ? 'is-active' : ''}`}>Solutions ▾</a>
-            <SolutionsMega open={megaOpen} />
+    <>
+      <nav className="nav" style={scrolled ? { boxShadow: 'var(--shadow-sm)' } : {}}>
+        <div className="nav-inner">
+          <a className="nav-logo" href="index.html">
+            <img src="images/primehr.svg" alt="PrimeHR" style={{ height: 32, width: 'auto', display: 'block' }} />
+          </a>
+          <div className="nav-links">
+            <a href="index.html" className={`nav-link ${active === 'home' ? 'is-active' : ''}`}>Home</a>
+            <div className="has-mega" onMouseEnter={openMega} onMouseLeave={closeMega}>
+              <a href="solutions.html" className={`nav-link ${['hrms', 'ffa', 'finance', 'soon'].includes(active) ? 'is-active' : ''}`}>Solutions ▾</a>
+              <SolutionsMega open={megaOpen} />
+            </div>
+            <a href="pricing.html" className={`nav-link ${active === 'pricing' ? 'is-active' : ''}`}>Pricing</a>
+            <a href="company.html" className={`nav-link ${active === 'company' ? 'is-active' : ''}`}>About Us</a>
+            <a href="contact.html" className={`nav-link ${active === 'contact' ? 'is-active' : ''}`}>Contact</a>
           </div>
-          <a href="pricing.html" className={`nav-link ${active === 'pricing' ? 'is-active' : ''}`}>Pricing</a>
-          <a href="company.html" className={`nav-link ${active === 'company' ? 'is-active' : ''}`}>About Us</a>
-          <a href="contact.html" className={`nav-link ${active === 'contact' ? 'is-active' : ''}`}>Contact</a>
+          <div className="nav-actions">
+            <a href="#" className="btn btn--ghost" style={{ padding: '8px 14px', fontSize: 14 }}>Sign in</a>
+            <a href="#" className="btn btn--primary" style={{ padding: '8px 16px', fontSize: 14 }}>Start free <Icon name="arrow" size={16} className="btn-arrow" /></a>
+          </div>
+          {/* Hamburger toggle */}
+          <button
+            className={`nav-toggle ${mobileOpen ? 'is-open' : ''}`}
+            onClick={() => setMobileOpen(o => !o)}
+            aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
+          >
+            <span /><span /><span />
+          </button>
         </div>
+      </nav>
+      {/* Mobile nav drawer */}
+      <div className={`nav-mobile ${mobileOpen ? 'is-open' : ''}`}>
+        <a href="index.html" className={`nav-link ${active === 'home' ? 'is-active' : ''}`} onClick={closeMobile}>Home</a>
+        <a href="solutions.html" className={`nav-link ${['hrms', 'ffa', 'finance', 'soon'].includes(active) ? 'is-active' : ''}`} onClick={closeMobile}>Solutions</a>
+        <a href="hrms.html" className="nav-link" onClick={closeMobile} style={{ paddingLeft: 28, fontSize: 14, color: 'var(--ink-500)' }}>↳ HRMS &amp; Payroll</a>
+        <a href="field-force.html" className="nav-link" onClick={closeMobile} style={{ paddingLeft: 28, fontSize: 14, color: 'var(--ink-500)' }}>↳ Field Force</a>
+        <a href="finance.html" className="nav-link" onClick={closeMobile} style={{ paddingLeft: 28, fontSize: 14, color: 'var(--ink-500)' }}>↳ Finance</a>
+        <a href="pricing.html" className={`nav-link ${active === 'pricing' ? 'is-active' : ''}`} onClick={closeMobile}>Pricing</a>
+        <a href="company.html" className={`nav-link ${active === 'company' ? 'is-active' : ''}`} onClick={closeMobile}>About Us</a>
+        <a href="contact.html" className={`nav-link ${active === 'contact' ? 'is-active' : ''}`} onClick={closeMobile}>Contact</a>
         <div className="nav-actions">
-          <a href="#" className="btn btn--ghost" style={{ padding: '8px 14px', fontSize: 14 }}>Sign in</a>
-          <a href="#" className="btn btn--primary" style={{ padding: '8px 16px', fontSize: 14 }}>Start free <Icon name="arrow" size={16} className="btn-arrow" /></a>
+          <a href="#" className="btn btn--ghost" onClick={closeMobile}>Sign in</a>
+          <a href="#" className="btn btn--primary" onClick={closeMobile}>Start free <Icon name="arrow" size={16} className="btn-arrow" /></a>
         </div>
       </div>
-    </nav>
+    </>
   );
 };
+
 
 // Footer
 const Footer = () => (
