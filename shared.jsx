@@ -21,6 +21,8 @@ const Icon = ({ name, size = 20, ...rest }) => {
     wave: <path d="M3 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />,
     target: <g stroke="currentColor" strokeWidth="1.8" fill="none"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1.6" fill="currentColor" /></g>,
     layers: <g stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z" /><path d="M3 13l9 5 9-5M3 18l9 5 9-5" /></g>,
+    heart: <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinejoin="round" />,
+    globe: <g stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M2 12h20M12 3c-2.5 3-4 5.5-4 9s1.5 6 4 9M12 3c2.5 3 4 5.5 4 9s-1.5 6-4 9" strokeLinecap="round" /></g>,
   };
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" {...rest}>
