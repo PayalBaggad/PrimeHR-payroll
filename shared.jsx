@@ -105,7 +105,7 @@ const NavBar = ({ active = '' }) => {
       <nav className="nav" style={scrolled ? { boxShadow: 'var(--shadow-sm)' } : {}}>
         <div className="nav-inner">
           <a className="nav-logo" href="index.html">
-            <img src="images/primehr.svg" alt="PrimeHR" style={{ height: 32, width: 'auto', display: 'block' }} />
+            <img src="images/primehr.svg" alt="PrimeHR" style={{ height: 20, width: 'auto', display: 'block' }} />
           </a>
           <div className="nav-links">
             <a href="index.html" className={`nav-link ${active === 'home' ? 'is-active' : ''}`}>Home</a>
