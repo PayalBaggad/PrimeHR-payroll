@@ -118,8 +118,8 @@ const NavBar = ({ active = '' }) => {
             <a href="contact.html" className={`nav-link ${active === 'contact' ? 'is-active' : ''}`}>Contact</a>
           </div>
           <div className="nav-actions">
-            <a href="#" className="btn btn--ghost" style={{ padding: '8px 14px', fontSize: 14 }}>Sign in</a>
-            <a href="#" className="btn btn--primary" style={{ padding: '8px 16px', fontSize: 14 }}>Start free <Icon name="arrow" size={16} className="btn-arrow" /></a>
+            <a href="https://app.primehr.in/org-signin" target="_blank" rel="noopener noreferrer" className="btn btn--ghost" style={{ padding: '8px 14px', fontSize: 14 }}>Sign in</a>
+            <a href="https://app.primehr.in/org-signup" target="_blank" rel="noopener noreferrer" className="btn btn--primary" style={{ padding: '8px 16px', fontSize: 14 }}>Start free <Icon name="arrow" size={16} className="btn-arrow" /></a>
           </div>
           {/* Hamburger toggle */}
           <button
@@ -143,8 +143,8 @@ const NavBar = ({ active = '' }) => {
         <a href="company.html" className={`nav-link ${active === 'company' ? 'is-active' : ''}`} onClick={closeMobile}>About Us</a>
         <a href="contact.html" className={`nav-link ${active === 'contact' ? 'is-active' : ''}`} onClick={closeMobile}>Contact</a>
         <div className="nav-actions">
-          <a href="#" className="btn btn--ghost" onClick={closeMobile}>Sign in</a>
-          <a href="#" className="btn btn--primary" onClick={closeMobile}>Start free <Icon name="arrow" size={16} className="btn-arrow" /></a>
+          <a href="https://app.primehr.in/org-signin" target="_blank" rel="noopener noreferrer" className="btn btn--ghost" onClick={closeMobile}>Sign in</a>
+          <a href="https://app.primehr.in/org-signup" target="_blank" rel="noopener noreferrer" className="btn btn--primary" onClick={closeMobile}>Start free <Icon name="arrow" size={16} className="btn-arrow" /></a>
         </div>
       </div>
     </>
